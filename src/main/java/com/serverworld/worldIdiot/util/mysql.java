@@ -22,4 +22,15 @@ public class mysql {
             return false;
         }
     }
+    public static boolean unban(String banid){
+        try {
+            Statement statement = worldIdiot.connection.createStatement();
+            String updateer = "DELETE FROM `worldidiot_bandata` WHERE `worldidiot_bandata`.`id` = "+banid+";";
+            statement.executeUpdate(updateer);
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

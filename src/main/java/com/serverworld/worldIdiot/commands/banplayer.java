@@ -19,7 +19,7 @@ public class banplayer extends Command{
     //dan playername endtime reason
     public void execute(CommandSender commandSender, String[] strings) {
         if(strings.length>=2&&strings[1].length()>1) {
-                if (strings[2].length() > 16) {
+                if (strings[0].length() > 16) {
                     //uuid
                     String dateform = strings[1].substring(strings[1].length() - 1);
                     //check dateform import
@@ -35,13 +35,18 @@ public class banplayer extends Command{
                             return;
                         }
                     }
+                    mysql.ban(strings[0].toString(), commandSender.getName(), strings[2], strings[1]);
+                    if(strings[3].equals("true")){
+                        for (ProxiedPlayer players : ProxyServer.getInstance().getPlayers()) {
+                        players.sendMessage(new TextComponent(ChatColor.RED + strings[0] + " got banned by "+commandSender.getName()));
+                        }
+                    }
                     //end fon
                 } else {
                     //id
                     for (ProxiedPlayer player : ProxyServer.getInstance().getPlayers()) {
                         Boolean ban =false;
-                        //== not work, fuck this shit
-                        if (player.getName().toString().equals(strings[0])) {
+                        if (player.getName().toString()==strings[0].toString()) {
                             String dateform = strings[1].substring(strings[1].length() - 1);
                             //check dateform import
                             switch (dateform) {

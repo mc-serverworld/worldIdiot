@@ -55,7 +55,6 @@ public class worldIdiot extends Plugin {
         new mysql(this);
         getLogger().info("Yay! It loads!");
         getLogger().info("Helloworld");
-//INSERT INTO worldidiot_bandata (PlayerUUID, executor,start,end,reason) VALUES ('test-test-1000-1000', 'paul0665', '1000','2000','測試')
         //sql cnt
         try {
             openConnection();
@@ -92,7 +91,7 @@ public class worldIdiot extends Plugin {
                 return;
             }
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://" + this.host + ":" + this.port + "/" + this.database+"?autoReconnect=true", this.username, this.password);
+            connection = DriverManager.getConnection("jdbc:mysql://" + this.host + ":" + this.port + "/" + this.database+"?autoReconnect=true&characterEncoding=utf-8", this.username, this.password);
         }
     }
 }

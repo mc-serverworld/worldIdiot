@@ -24,21 +24,15 @@ public class banplayer extends Command{
                     String dateform = strings[1].substring(strings[1].length() - 1);
                     //check dateform import
                     switch (dateform) {
-                        case "s":
-                            ;//sec
-                        case "m":
-                            ;//min
-                        case "h":
-                            ;//hour
-                        case "d":
-                            ;//day
-                        case "o":
-                            ;//mount
-                        case "y":
-                            ;//year
+                        case "s": break;//sec
+                        case "m": break;//min
+                        case "h": break;//hour
+                        case "d": break;//day
+                        case "o": break;//mount
+                        case "y": break;//year
                         default: {
                             commandSender.sendMessage(new TextComponent(ChatColor.RED + "wtf this not the dateform!" + ChatColor.YELLOW + "\nusage s/m/h/d/mo/y"));
-                            break;
+                            return;
                         }
                     }
                     //end fon
@@ -51,21 +45,15 @@ public class banplayer extends Command{
                             String dateform = strings[1].substring(strings[1].length() - 1);
                             //check dateform import
                             switch (dateform) {
-                                case "s":
-                                    ;//sec
-                                case "m":
-                                    ;//min
-                                case "h":
-                                    ;//hour
-                                case "d":
-                                    ;//day
-                                case "o":
-                                    ;//mount
-                                case "y":
-                                    ;//year
+                                case "s": break;//sec
+                                case "m": break;//min
+                                case "h": break;//hour
+                                case "d": break;//day
+                                case "o": break;//mount
+                                case "y": break;//year
                                 default: {
                                     commandSender.sendMessage(new TextComponent(ChatColor.RED + "wtf this not the dateform!" + ChatColor.YELLOW + "\nusage s/m/h/d/mo/y"));
-                                    break;
+                                    return;
                                 }
 
                             }

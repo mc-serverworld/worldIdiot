@@ -1,0 +1,12 @@
+# worldProfile
+# Version: ${project.version}
+# Gitgub: https://github.com/mc-serverworld/worldProfile
+data:
+  mysql:
+    host: localhost
+    port: 3306
+    username: root
+    password: open
+    database: worldprofile
+test1: "this is test1"
+test2: "this is test2"

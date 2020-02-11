@@ -1,6 +1,7 @@
 package com.serverworld.worldIdiot.util;
 
 import com.serverworld.worldIdiot.worldIdiot;
+import com.serverworld.worldIdiot.util.mysql;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -49,7 +50,9 @@ public class WebUtil {
                         //add ban info to sql, will be ban soon
                         if(player!=null){
                             //UUIDList.add(player.getUniqueId().toString());
-                            player.disconnect(new TextComponent("You are banned from this server. reason: mcleak accont are not allow!"));
+                            mysql.ban(player.getUniqueId().toString(),"console","mcleak accont are not allow!","10y");
+                            player.disconnect(new TextComponent(ChatColor.RED+"\nYou are banned from this server."+ChatColor.WHITE+"\n\nreason: mcleak accont are not allow!"));
+
                         }
 
                     }

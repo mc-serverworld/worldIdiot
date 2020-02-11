@@ -77,6 +77,7 @@ public class worldIdiot extends Plugin {
         }
         //end
         getProxy().getPluginManager().registerCommand(this,new banplayer(this));
+        getProxy().getPluginManager().registerCommand(this,new unbanplayer(this));
     }
 
 

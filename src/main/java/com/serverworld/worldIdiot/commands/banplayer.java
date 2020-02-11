@@ -11,7 +11,7 @@ import net.md_5.bungee.api.plugin.Plugin;
 
 public class banplayer extends Command{
     public banplayer(Plugin plugin){
-        super("dan");
+        super("dan","dan");
     }
     //dan playername endtime reason
     public void execute(CommandSender commandSender, String[] strings) {

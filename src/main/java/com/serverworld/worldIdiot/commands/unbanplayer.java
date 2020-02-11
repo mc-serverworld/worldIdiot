@@ -9,7 +9,7 @@ import net.md_5.bungee.api.plugin.Plugin;
 
 public class unbanplayer extends Command{
     public unbanplayer(Plugin plugin){
-        super("undan");
+        super("undan","undan");
     }
     //undan banid
     public void execute(CommandSender commandSender, String[] strings){

@@ -5,3 +5,21 @@ authors:
   - paul0665
   - mc-serverworld
 website: mc-serverworld.com
+commands:
+  dan:
+    description: ban player
+    permission: worldidiot.dan
+    permission-message: You do not have permission!
+    usage: /dan [playerid|playeruuid] [s|m|h|d|o|y] reason
+  undan:
+    description: unban player
+    permission: worldidiot.undan
+    permission-message: You do not have permission!
+    usage: /undan banid confirm
+permissions:
+  worldidiot.dan:
+    description: ban player
+    default: op
+  worldidiot.undan:
+    description: unban player
+    default: op

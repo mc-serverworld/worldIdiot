@@ -32,11 +32,19 @@ public class banplayer extends Command{
                             return;
                         }
                     }
-                    mysql.ban(strings[0].toString(), commandSender.getName(), strings[2], strings[1]);
-                    if(strings[3].equals("true")){
-                        for (ProxiedPlayer players : ProxyServer.getInstance().getPlayers()) {
-                        players.sendMessage(new TextComponent(ChatColor.RED + strings[0] + " got banned by "+commandSender.getName()));
+                    String[] reasons= new String[40];
+                    reasons=strings;
+                    reasons[0]="";
+                    reasons[1]="";
+                    String reason=new String();
+                    for (String stuff:reasons) {
+                        if(stuff==""){}else {
+                            reason+=stuff+" ";
                         }
+                    }
+                    mysql.ban(strings[0].toString(), commandSender.getName(), reason, strings[1]);
+                    for (ProxiedPlayer players : ProxyServer.getInstance().getPlayers()) {
+                        players.sendMessage(new TextComponent(ChatColor.RED + strings[0] + " got banned by "+commandSender.getName()));
                     }
                     //end fon
                 } else {
@@ -59,8 +67,18 @@ public class banplayer extends Command{
                                 }
 
                             }
-                            mysql.ban(player.getUniqueId().toString(), commandSender.getName(), strings[2], strings[1]);
-                            player.disconnect(new TextComponent(ChatColor.RED+"\nYou are banned from this server."+ChatColor.WHITE+"\n\nreason: "+strings[2]));
+                            String[] reasons= new String[40];
+                            reasons=strings;
+                            reasons[0]="";
+                            reasons[1]="";
+                            String reason=new String();
+                            for (String stuff:reasons) {
+                                if(stuff==""){}else {
+                                    reason+=stuff+" ";
+                                }
+                            }
+                            mysql.ban(player.getUniqueId().toString(), commandSender.getName(), reason, strings[1]);
+                            player.disconnect(new TextComponent(ChatColor.RED+"\nYou are banned from this server."+ChatColor.WHITE+"\n\nreason: "+reason));
                             ban=true;
                         }
                         if(ban){

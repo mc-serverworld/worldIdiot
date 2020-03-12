@@ -1,6 +1,6 @@
-# worldProfile
+# worldIdiot
 # Version: ${project.version}
-# Gitgub: https://github.com/mc-serverworld/worldProfile
+# Gitgub: https://github.com/mc-serverworld/worldidiot
 data:
   mysql:
     host: localhost
@@ -8,5 +8,3 @@ data:
     username: root
     password: open
     database: worldprofile
-test1: "this is test1"
-test2: "this is test2"

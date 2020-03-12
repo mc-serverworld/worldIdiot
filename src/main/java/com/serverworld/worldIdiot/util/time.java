@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 public class time {
     //ex 10s 1y 5h
     public static long converttime(String times){
-        String dateform = times.substring(times.length() - 1);
+        String dateform = times.substring((times.length() - 1));
         String timent = times.substring(0,times.length() - 1);
         //check dateform import
         Date date = new Date();

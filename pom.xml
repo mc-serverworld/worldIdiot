@@ -8,7 +8,7 @@
     <groupId>com.serverworld</groupId>
     <artifactId>worldIdiot</artifactId>
     <name>worldIdiot</name>
-    <version>3.1.3-release</version>
+    <version>3.1.4-release</version>
 
     <build>
         <finalName>${project.artifactId}-${project.version}</finalName>

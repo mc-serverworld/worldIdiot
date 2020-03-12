@@ -22,7 +22,6 @@ public class banplayer extends Command{
                 if(i>1){reason+=stuff+" ";}
                 i++;
             }
-            commandSender.sendMessage(new TextComponent(reason));
                 if (strings[0].length() > 16) {
                     //uuid
                     String dateform = strings[1].substring(strings[1].length() - 1);

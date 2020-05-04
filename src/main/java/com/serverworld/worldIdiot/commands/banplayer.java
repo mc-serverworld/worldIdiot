@@ -1,6 +1,7 @@
 package com.serverworld.worldIdiot.commands;
 
 import com.serverworld.worldIdiot.util.mysql;
+import io.netty.util.internal.StringUtil;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
@@ -8,8 +9,11 @@ import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
 import net.md_5.bungee.api.plugin.Plugin;
+import net.md_5.bungee.api.plugin.TabExecutor;
 
-public class banplayer extends Command{
+import java.util.*;
+
+public class banplayer extends Command implements TabExecutor {
     public banplayer(Plugin plugin){
         super("dan","dan");
     }
@@ -82,5 +86,20 @@ public class banplayer extends Command{
             commandSender.sendMessage(new TextComponent(ChatColor.RED + "wtf this not right input"));
             commandSender.sendMessage(new TextComponent(ChatColor.YELLOW + "/dan uuid/playerid time reason"));
         }
+    }
+
+    @Override
+    public Iterable<String> onTabComplete(CommandSender commandSender, String[] strings) {
+
+        Set<String> match = new HashSet();
+        if (strings.length == 1) {
+            String search = strings[0].toLowerCase();
+            for (ProxiedPlayer player : ProxyServer.getInstance().getPlayers()) {
+                if (player.getName().toLowerCase().startsWith(search)) {
+                    match.add(player.getName());
+                }
+            }
+        }
+        return match;
     }
 }

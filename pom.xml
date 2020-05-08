@@ -40,6 +40,11 @@
             <id>bungeecord-repo</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </repository>
+
+        <repository>
+            <id>minecrell</id>
+            <url>https://repo.minecrell.net/snapshots</url>
+        </repository>
     </repositories>
 
     <dependencies>

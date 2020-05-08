@@ -1,6 +1,7 @@
 package com.serverworld.worldIdiot;
 
 import com.serverworld.worldIdiot.Listeners.PlayerLogin;
+import com.serverworld.worldIdiot.api.ServerListPlusBanProvider;
 import com.serverworld.worldIdiot.commands.*;
 import com.serverworld.worldIdiot.util.*;
 import net.md_5.bungee.api.plugin.Plugin;
@@ -24,6 +25,7 @@ public class worldIdiot extends Plugin {
     public static Connection connection;
     private String host, database, username, password;
     private int port;
+    ServerListPlusCore core;
     @Override
     public void onEnable() {
         if (!getDataFolder().exists())

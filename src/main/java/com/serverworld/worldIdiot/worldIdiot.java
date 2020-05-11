@@ -1,13 +1,14 @@
 package com.serverworld.worldIdiot;
 
 import com.serverworld.worldIdiot.Listeners.PlayerLogin;
-import com.serverworld.worldIdiot.api.ServerListPlusBanProvider;
+import com.serverworld.worldIdiot.api.ServerListPlusBanQuery;
 import com.serverworld.worldIdiot.commands.*;
 import com.serverworld.worldIdiot.util.*;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.ConfigurationProvider;
 import net.md_5.bungee.config.YamlConfiguration;
+import net.minecrell.serverlistplus.core.ServerListPlusCore;
 
 import java.io.File;
 import java.io.IOException;
@@ -80,6 +81,9 @@ public class worldIdiot extends Plugin {
         //end
         getProxy().getPluginManager().registerCommand(this,new banplayer(this));
         getProxy().getPluginManager().registerCommand(this,new unbanplayer(this));
+
+        core = ServerListPlusCore.getInstance();
+        core.setBanProvider(new ServerListPlusBanQuery(this));
     }
 
 

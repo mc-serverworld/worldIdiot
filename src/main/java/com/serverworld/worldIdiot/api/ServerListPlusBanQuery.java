@@ -1,26 +1,28 @@
 package com.serverworld.worldIdiot.api;
 
     import com.serverworld.worldIdiot.worldIdiot;
-    //import net.minecrell.serverlistplus.core.player.PlayerIdentity;
-
+    import net.minecrell.serverlistplus.core.player.PlayerIdentity;
+    import net.minecrell.serverlistplus.core.player.ban.BanProvider;
     import java.sql.ResultSet;
     import java.sql.SQLException;
     import java.sql.Statement;
-    import java.text.SimpleDateFormat;
     import java.util.Date;
 
-    public class ServerListPlusBanProvider {
-        /*
+    public class ServerListPlusBanQuery implements BanProvider{
+        worldIdiot worldidiot;
+        public ServerListPlusBanQuery(worldIdiot worldidiot){
+            this.worldidiot = worldidiot;
+        }
         public boolean isBanned(PlayerIdentity playerIdentity){
             try {
-                Statement statement = worldIdiot.connection.createStatement();
+                Statement statement = worldidiot.connection.createStatement();
                 ResultSet rs = statement.executeQuery("SELECT * FROM worldidiot_bandata WHERE PlayerUUID='" + playerIdentity.getUuid() + "'ORDER BY worldidiot_bandata.id DESC LIMIT 1;");
                 Boolean banbefore =false;
                 banbefore = rs.next();
                 Date date = new Date();
                 if(banbefore){
                     if(Long.valueOf(rs.getString("end" )) > date.getTime()){
-                        return true; //.rs.getString("reason" )
+                        return true;
                     }
                 }
             } catch (SQLException e) {
@@ -32,7 +34,7 @@ package com.serverworld.worldIdiot.api;
 
         public String getBanReason(PlayerIdentity playerIdentity){
             try {
-                Statement statement = worldIdiot.connection.createStatement();
+                Statement statement = worldidiot.connection.createStatement();
                 ResultSet rs = statement.executeQuery("SELECT * FROM worldidiot_bandata WHERE PlayerUUID='" + playerIdentity.getUuid() + "'ORDER BY worldidiot_bandata.id DESC LIMIT 1;");
                 Boolean banbefore =false;
                 banbefore = rs.next();
@@ -51,7 +53,7 @@ package com.serverworld.worldIdiot.api;
 
         public String getBanOperator(PlayerIdentity playerIdentity){
             try {
-                Statement statement = worldIdiot.connection.createStatement();
+                Statement statement = worldidiot.connection.createStatement();
                 ResultSet rs = statement.executeQuery("SELECT * FROM worldidiot_bandata WHERE PlayerUUID='" + playerIdentity.getUuid() + "'ORDER BY worldidiot_bandata.id DESC LIMIT 1;");
                 Boolean banbefore =false;
                 banbefore = rs.next();
@@ -70,7 +72,7 @@ package com.serverworld.worldIdiot.api;
 
         public Date getBanExpiration(PlayerIdentity playerIdentity){
             try {
-                Statement statement = worldIdiot.connection.createStatement();
+                Statement statement = worldidiot.connection.createStatement();
                 ResultSet rs = statement.executeQuery("SELECT * FROM worldidiot_bandata WHERE PlayerUUID='" + playerIdentity.getUuid() + "'ORDER BY worldidiot_bandata.id DESC LIMIT 1;");
                 Boolean banbefore =false;
                 banbefore = rs.next();
@@ -86,5 +88,5 @@ package com.serverworld.worldIdiot.api;
                 return null;
             }
             return null;
-        }*/
+        }
     }

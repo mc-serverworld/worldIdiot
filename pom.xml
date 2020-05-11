@@ -40,10 +40,9 @@
             <id>bungeecord-repo</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </repository>
-
         <repository>
-            <id>minecrell</id>
-            <url>https://repo.minecrell.net/snapshots</url>
+            <id>serverlistplus-repo</id>
+            <url>https://repo.codemc.org/repository/maven-snapshots</url>
         </repository>
     </repositories>
 
@@ -74,6 +73,14 @@
             <groupId>com.googlecode.json-simple</groupId>
             <artifactId>json-simple</artifactId>
             <version>1.1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.minecrell</groupId>
+            <artifactId>ServerListPlus</artifactId>
+            <version>3.5.0-20190601.204403-16</version>
+            <classifier>Universal</classifier>
+            <type>jar</type>
         </dependency>
 
     </dependencies>

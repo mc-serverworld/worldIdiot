@@ -8,11 +8,11 @@ import java.sql.Statement;
 import java.util.Date;
 
 public class BanQuery {
-    worldIdiot worldidiot;
+    static worldIdiot worldidiot;
     public BanQuery(worldIdiot worldidiot){
         this.worldidiot = worldidiot;
     }
-    public boolean isBanned(String UUID){
+    public static boolean isBanned(String UUID){
         try {
             Statement statement = worldidiot.connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * FROM worldidiot_bandata WHERE PlayerUUID='" + UUID + "'ORDER BY worldidiot_bandata.id DESC LIMIT 1;");
@@ -31,7 +31,7 @@ public class BanQuery {
         return false;
     }
 
-    public String getBanReason(String UUID){
+    public static String getBanReason(String UUID){
         try {
             Statement statement = worldidiot.connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * FROM worldidiot_bandata WHERE PlayerUUID='" + UUID + "'ORDER BY worldidiot_bandata.id DESC LIMIT 1;");
@@ -50,7 +50,7 @@ public class BanQuery {
         return null;
     }
 
-    public String getBanOperator(String UUID){
+    public static String getBanOperator(String UUID){
         try {
             Statement statement = worldidiot.connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * FROM worldidiot_bandata WHERE PlayerUUID='" + UUID + "'ORDER BY worldidiot_bandata.id DESC LIMIT 1;");
@@ -69,7 +69,7 @@ public class BanQuery {
         return null;
     }
 
-    public Date getBanExpiration(String UUID){
+    public static Date getBanExpiration(String UUID){
         try {
             Statement statement = worldidiot.connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * FROM worldidiot_bandata WHERE PlayerUUID='" + UUID + "'ORDER BY worldidiot_bandata.id DESC LIMIT 1;");

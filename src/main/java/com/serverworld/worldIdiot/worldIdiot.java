@@ -1,9 +1,11 @@
 package com.serverworld.worldIdiot;
 
 import com.serverworld.worldIdiot.Listeners.PlayerLogin;
+import com.serverworld.worldIdiot.api.BanQuery;
 import com.serverworld.worldIdiot.api.ServerListPlusBanQuery;
 import com.serverworld.worldIdiot.commands.*;
 import com.serverworld.worldIdiot.util.*;
+import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.ConfigurationProvider;
@@ -26,9 +28,9 @@ public class worldIdiot extends Plugin {
     public static Connection connection;
     private String host, database, username, password;
     private int port;
-    ServerListPlusCore core;
+
     @Override
-    public void onEnable() {
+    public void onLoad() {
         if (!getDataFolder().exists())
             getDataFolder().mkdir();
 
@@ -46,6 +48,7 @@ public class worldIdiot extends Plugin {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         config = new worldIdiotconfig(this);
         //config.loadDefConfig();
         host = config.host();
@@ -56,9 +59,7 @@ public class worldIdiot extends Plugin {
         WebUtil.setmainplugin(this);
         new PlayerLogin(this);
         new mysql(this);
-        getLogger().info("Yay! It loads!");
-        getLogger().info("Helloworld");
-        //sql cnt
+
         try {
             openConnection();
             Statement statement = connection.createStatement();
@@ -79,11 +80,25 @@ public class worldIdiot extends Plugin {
             e.printStackTrace();
         }
         //end
-        getProxy().getPluginManager().registerCommand(this,new banplayer(this));
-        getProxy().getPluginManager().registerCommand(this,new unbanplayer(this));
+        getProxy().getPluginManager().registerCommand(this, new banplayer(this));
+        getProxy().getPluginManager().registerCommand(this, new unbanplayer(this));
 
-        core = ServerListPlusCore.getInstance();
-        core.setBanProvider(new ServerListPlusBanQuery(this));
+        new BanQuery(this);
+    }
+    public void onEnable() {
+        try {
+            if (getProxy().getPluginManager().getPlugin("ServerListPlus") != null) {
+                getLogger().info(ChatColor.YELLOW + "Found ServerListPlus! hooking it.");
+                ServerListPlusCore core = ServerListPlusCore.getInstance();
+                core.setBanProvider(new ServerListPlusBanQuery(this));
+                getLogger().info(ChatColor.GREEN + "Hooked ServerListPlus!");
+            }
+        } catch (Exception e) {
+            getLogger().info("Error");
+            e.printStackTrace();
+        }
+        getLogger().info("Yay! It loads!");
+        getLogger().info("Helloworld");
     }
 
 

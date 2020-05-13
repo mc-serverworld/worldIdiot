@@ -99,9 +99,6 @@ public class worldIdiot extends Plugin {
         int pluginId = 7519; // <-- Replace with the id of your plugin!
         Metrics metrics = new Metrics(this, pluginId);
 
-        // Optional: Add custom charts
-        metrics.addCustomChart(new Metrics.SimplePie("chart_id", () -> "My value"));
-
         getLogger().info("Yay! It loads!");
         getLogger().info(ChatColor.GREEN + "Hello world");
     }

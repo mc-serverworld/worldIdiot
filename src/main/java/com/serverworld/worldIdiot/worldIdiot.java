@@ -10,6 +10,7 @@ import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.ConfigurationProvider;
 import net.md_5.bungee.config.YamlConfiguration;
 import net.minecrell.serverlistplus.core.ServerListPlusCore;
+import org.bstats.bungeecord.Metrics;
 
 import java.io.File;
 import java.io.IOException;
@@ -94,8 +95,15 @@ public class worldIdiot extends Plugin {
             getLogger().info(ChatColor.RED + "Error");
             e.printStackTrace();
         }
+
+        int pluginId = 7519; // <-- Replace with the id of your plugin!
+        Metrics metrics = new Metrics(this, pluginId);
+
+        // Optional: Add custom charts
+        metrics.addCustomChart(new Metrics.SimplePie("chart_id", () -> "My value"));
+
         getLogger().info("Yay! It loads!");
-        getLogger().info("Helloworld");
+        getLogger().info(ChatColor.GREEN + "Hello world");
     }
 
 

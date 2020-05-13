@@ -42,7 +42,7 @@
                     <relocations>
                         <relocation>
                             <pattern>org.bstats</pattern>
-                            <shadedPattern>com.serverworld.worldIdiot</shadedPattern>
+                            <shadedPattern>com.serverworld.worldIdiot.libs.bstats</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>

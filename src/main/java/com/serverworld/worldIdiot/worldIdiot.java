@@ -1,7 +1,6 @@
 package com.serverworld.worldIdiot;
 
 import com.serverworld.worldIdiot.Listeners.PlayerLogin;
-import com.serverworld.worldIdiot.api.BanQuery;
 import com.serverworld.worldIdiot.api.ServerListPlusBanQuery;
 import com.serverworld.worldIdiot.commands.*;
 import com.serverworld.worldIdiot.util.*;
@@ -82,8 +81,6 @@ public class worldIdiot extends Plugin {
         //end
         getProxy().getPluginManager().registerCommand(this, new banplayer(this));
         getProxy().getPluginManager().registerCommand(this, new unbanplayer(this));
-
-        new BanQuery(this);
     }
     public void onEnable() {
         try {
@@ -94,7 +91,7 @@ public class worldIdiot extends Plugin {
                 getLogger().info(ChatColor.GREEN + "Hooked ServerListPlus!");
             }
         } catch (Exception e) {
-            getLogger().info("Error");
+            getLogger().info(ChatColor.RED + "Error");
             e.printStackTrace();
         }
         getLogger().info("Yay! It loads!");

@@ -197,7 +197,6 @@
             <artifactId>ServerListPlus</artifactId>
             <version>3.5.0-20190601.204403-16</version>
             <classifier>Universal</classifier>
-            <scope>compile</scope>
         </dependency>
 
         <dependency>

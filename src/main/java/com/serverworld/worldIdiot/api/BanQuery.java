@@ -8,9 +8,9 @@ package com.serverworld.worldIdiot.api;
     import java.sql.Statement;
     import java.util.Date;
 
-    public class ServerListPlusBanQuery implements BanProvider{
+    public class BanQuery implements BanProvider{
         worldIdiot worldidiot;
-        public ServerListPlusBanQuery(worldIdiot worldidiot){
+        public BanQuery(worldIdiot worldidiot){
             this.worldidiot = worldidiot;
         }
         public boolean isBanned(PlayerIdentity playerIdentity){

@@ -1,10 +1,9 @@
 package com.serverworld.worldIdiot;
 
 import com.serverworld.worldIdiot.Listeners.PlayerLogin;
-import com.serverworld.worldIdiot.api.ServerListPlusBanQuery;
+import com.serverworld.worldIdiot.api.BanQuery;
 import com.serverworld.worldIdiot.commands.*;
 import com.serverworld.worldIdiot.util.mysql;
-import com.serverworld.worldIdiot.util.time;
 import com.serverworld.worldIdiot.util.WebUtil;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.plugin.Plugin;
@@ -91,7 +90,8 @@ public class worldIdiot extends Plugin {
             if (getProxy().getPluginManager().getPlugin("ServerListPlus") != null) {
                 getLogger().info(ChatColor.YELLOW + "Found ServerListPlus! hooking it.");
                 ServerListPlusCore core = ServerListPlusCore.getInstance();
-                core.setBanProvider(new ServerListPlusBanQuery(this));
+                BanQuery SVBQ= new BanQuery(this);
+                core.setBanProvider(SVBQ);
                 getLogger().info(ChatColor.GREEN + "Hooked ServerListPlus!");
             }
         } catch (Exception e) {

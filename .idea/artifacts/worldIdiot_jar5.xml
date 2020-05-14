@@ -13,6 +13,7 @@
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/minecrell/ServerListPlus/3.5.0-SNAPSHOT/ServerListPlus-3.5.0-20190601.204403-16-Universal.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/ocpsoft/prettytime/prettytime/4.0.1.Final/prettytime-4.0.1.Final.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/junit/junit/4.10/junit-4.10.jar" path-in-jar="/" />
+      <element id="library" level="project" name="Maven: net.minecrell:ServerListPlus:Universal:3.5.0-SNAPSHOT" />
     </root>
   </artifact>
 </component>

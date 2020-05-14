@@ -83,7 +83,6 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <shadedArtifactAttached>false</shadedArtifactAttached>
                             <outputFile>${basedir}/output/${project.artifactId}-${project.version}.jar</outputFile>
                             <filters>
                                 <filter>

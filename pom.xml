@@ -64,12 +64,23 @@
                     </relocations>
                     <shadedArtifactAttached>true</shadedArtifactAttached>
                 </configuration>
+
                 <executions>
                     <execution>
                         <phase>package</phase>
                         <goals>
                             <goal>shade</goal>
                         </goals>
+                        <configuration>
+                            <filters>
+                                <filter>
+                                    <artifact>net.minecrell:*</artifact>
+                                    <excludes>
+                                        <exclude>*.yml</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

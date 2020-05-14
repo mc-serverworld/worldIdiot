@@ -10,7 +10,6 @@ import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.ConfigurationProvider;
 import net.md_5.bungee.config.YamlConfiguration;
-import net.minecrell.serverlistplus.core.ServerListPlusCore;
 import org.bstats.bungeecord.Metrics;
 
 import java.io.File;
@@ -88,11 +87,7 @@ public class worldIdiot extends Plugin {
     public void onEnable() {
         try {
             if (getProxy().getPluginManager().getPlugin("ServerListPlus") != null) {
-                getLogger().info(ChatColor.YELLOW + "Found ServerListPlus! hooking it.");
-                ServerListPlusCore core = ServerListPlusCore.getInstance();
-                BanQuery SVBQ= new BanQuery(this);
-                core.setBanProvider(SVBQ);
-                getLogger().info(ChatColor.GREEN + "Hooked ServerListPlus!");
+                new BanQuery(this);
             }
         } catch (Exception e) {
             getLogger().info(ChatColor.RED + "Error");

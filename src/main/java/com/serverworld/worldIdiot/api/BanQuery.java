@@ -1,6 +1,8 @@
 package com.serverworld.worldIdiot.api;
 
     import com.serverworld.worldIdiot.worldIdiot;
+    import net.md_5.bungee.api.ChatColor;
+    import net.minecrell.serverlistplus.core.ServerListPlusCore;
     import net.minecrell.serverlistplus.core.player.PlayerIdentity;
     import net.minecrell.serverlistplus.core.player.ban.BanProvider;
     import java.sql.ResultSet;
@@ -11,7 +13,15 @@ package com.serverworld.worldIdiot.api;
     public class BanQuery implements BanProvider{
         worldIdiot worldidiot;
         public BanQuery(worldIdiot worldidiot){
-            this.worldidiot = worldidiot;
+            try {
+                this.worldidiot = worldidiot;
+                ServerListPlusCore core = ServerListPlusCore.getInstance();
+                core.setBanProvider(this);
+                worldidiot.getLogger().info(ChatColor.GREEN + "Hooked ServerListPlus!");
+            }catch (Exception e){
+                worldidiot.getLogger().info(ChatColor.RED + "Error");
+                e.printStackTrace();
+            }
         }
         public boolean isBanned(PlayerIdentity playerIdentity){
             try {

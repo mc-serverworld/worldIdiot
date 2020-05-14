@@ -87,6 +87,7 @@ public class worldIdiot extends Plugin {
     public void onEnable() {
         try {
             if (getProxy().getPluginManager().getPlugin("ServerListPlus") != null) {
+                getLogger().info(ChatColor.YELLOW + "Found ServerListPlus, hooking it");
                 new BanQuery(this);
             }
         } catch (Exception e) {

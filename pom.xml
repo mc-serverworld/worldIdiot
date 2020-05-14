@@ -193,6 +193,7 @@
             <version>3.5.0-20190601.204403-16</version>
             <classifier>Universal</classifier>
             <scope>provided</scope>
+            <optional>true</optional>
         </dependency>
 
         <dependency>

@@ -90,6 +90,7 @@
                                     <excludes>
                                         <exclude>plugin.yml</exclude>
                                         <exclude>bungee.yml</exclude>
+                                        <exclude>mcmod.info</exclude>
                                     </excludes>
                                 </filter>
                             </filters>
@@ -191,6 +192,7 @@
             <artifactId>ServerListPlus</artifactId>
             <version>3.5.0-20190601.204403-16</version>
             <classifier>Universal</classifier>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>

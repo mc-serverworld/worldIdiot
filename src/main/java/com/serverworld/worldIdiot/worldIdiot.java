@@ -2,6 +2,7 @@ package com.serverworld.worldIdiot;
 
 import com.serverworld.worldIdiot.Listeners.PlayerLogin;
 import com.serverworld.worldIdiot.api.BanQuery;
+import com.serverworld.worldIdiot.api.BanQueryAPI;
 import com.serverworld.worldIdiot.commands.*;
 import com.serverworld.worldIdiot.util.mysql;
 import com.serverworld.worldIdiot.util.WebUtil;
@@ -117,4 +118,9 @@ public class worldIdiot extends Plugin {
             connection = DriverManager.getConnection("jdbc:mysql://" + this.host + ":" + this.port + "/" + this.database+"?autoReconnect=true&characterEncoding=utf-8", this.username, this.password);
         }
     }
+
+    public BanQueryAPI getAPI(){
+        return new BanQueryAPI(this);
+    }
+
 }

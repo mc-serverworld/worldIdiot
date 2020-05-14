@@ -89,13 +89,8 @@
                                 <filter>
                                     <artifact>net.minecrell:*</artifact>
                                     <excludes>
-                                        <exclude>*.yml</exclude>
-                                    </excludes>
-                                </filter>
-                                <filter>
-                                    <artifact>org.hamcrest:*</artifact>
-                                    <excludes>
-                                        <exclude>*.txt</exclude>
+                                        <exclude>plugin.yml</exclude>
+                                        <exclude>bungee.yml</exclude>
                                     </excludes>
                                 </filter>
                             </filters>

@@ -7,6 +7,7 @@ import com.serverworld.worldIdiot.commands.*;
 import com.serverworld.worldIdiot.util.mysql;
 import com.serverworld.worldIdiot.util.WebUtil;
 import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.ConfigurationProvider;
@@ -21,6 +22,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.concurrent.TimeUnit;
 
 public class worldIdiot extends Plugin {
     private File file;
@@ -89,7 +91,11 @@ public class worldIdiot extends Plugin {
         try {
             if (getProxy().getPluginManager().getPlugin("ServerListPlus") != null) {
                 getLogger().info(ChatColor.YELLOW + "Found ServerListPlus, hooking it");
-                new BanQuery(this);
+                getProxy().getScheduler().schedule(this, new Runnable() {
+                    public void run() {
+                        new BanQuery(worldIdiot.this);
+                    }
+                }, 1, TimeUnit.SECONDS);
             }
         } catch (Exception e) {
             getLogger().info(ChatColor.RED + "Error");

@@ -5,13 +5,13 @@ import com.serverworld.worldIdiot.api.BanQuery;
 import com.serverworld.worldIdiot.api.BanQueryAPI;
 import com.serverworld.worldIdiot.commands.*;
 import com.serverworld.worldIdiot.util.mysql;
-import com.serverworld.worldIdiot.util.WebUtil;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.ConfigurationProvider;
 import net.md_5.bungee.config.YamlConfiguration;
+import net.minecrell.serverlistplus.core.ServerListPlusCore;
 import org.bstats.bungeecord.Metrics;
 
 import java.io.File;
@@ -26,6 +26,7 @@ import java.util.concurrent.TimeUnit;
 
 public class worldIdiot extends Plugin {
     private File file;
+    private static worldIdiot worldIdiot;
     private worldIdiotconfig config;
     public static Configuration configuration;
     public static Connection connection;
@@ -59,7 +60,7 @@ public class worldIdiot extends Plugin {
         database = config.database();
         username = config.username();
         password = config.password();
-        WebUtil.setmainplugin(this);
+        worldIdiot = this;
         new PlayerLogin(this);
         new mysql(this);
 
@@ -101,7 +102,6 @@ public class worldIdiot extends Plugin {
             getLogger().info(ChatColor.RED + "Error");
             e.printStackTrace();
         }
-
         int pluginId = 7519; // <-- Replace with the id of your plugin!
         Metrics metrics = new Metrics(this,pluginId);
 
@@ -127,6 +127,10 @@ public class worldIdiot extends Plugin {
 
     public BanQueryAPI getAPI(){
         return new BanQueryAPI(this);
+    }
+
+    public static worldIdiot getInstance(){
+        return worldIdiot;
     }
 
 }

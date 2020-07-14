@@ -1,6 +1,6 @@
 package com.serverworld.worldIdiot.Listeners;
 
-import com.serverworld.worldIdiot.util.WebUtil;
+import com.serverworld.worldIdiot.util.McLeaksChecker;
 import com.serverworld.worldIdiot.worldIdiot;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ProxyServer;
@@ -37,10 +37,10 @@ public class PlayerLogin implements Listener {
                     SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
                     event.getPlayer().disconnect(new TextComponent(ChatColor.RED+"\nYou are banned from this server."+ChatColor.WHITE+"\n\nreason: "+rs.getString("reason" )+  "\nBanID: "+rs.getString("id" )+"\n\nyour ban will remove at "+sdFormat.format(endime)));
                 }else {
-                    WebUtil.testUUID(event.getPlayer().getUniqueId().toString(),event.getPlayer());
+                    McLeaksChecker.checkUUID(event.getPlayer().getUniqueId().toString(),event.getPlayer());
                 }
             }else {
-                WebUtil.testUUID(event.getPlayer().getUniqueId().toString(),event.getPlayer());
+                McLeaksChecker.checkUUID(event.getPlayer().getUniqueId().toString(),event.getPlayer());
             }
         } catch (SQLException e) {
             e.printStackTrace();

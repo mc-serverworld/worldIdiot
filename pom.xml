@@ -8,21 +8,7 @@
     <groupId>com.serverworld</groupId>
     <artifactId>worldIdiot</artifactId>
     <name>worldIdiot</name>
-    <version>3.1.11-beta-1</version>
-    <url>https://www.mc-serverworld.com</url>
-    <inceptionYear>2020</inceptionYear>
-
-    <organization>
-        <name>mc-serverworld</name>
-        <url>https://www.mc-serverworld.com</url>
-    </organization>
-
-    <licenses>
-        <license>
-            <name>MIT License</name>
-            <url>http://www.opensource.org/licenses/mit-license.php</url>
-        </license>
-    </licenses>
+    <version>3.2.0-release</version>
 
     <build>
         <finalName>${project.artifactId}-${project.version}</finalName>
@@ -51,7 +37,9 @@
                             jar-with-dependencies
                         </descriptorRef>
                     </descriptorRefs>
+
                 </configuration>
+
                 <executions>
                     <execution>
                         <id>make-assemble</id>
@@ -74,6 +62,7 @@
                             <shadedPattern>com.serverworld.worldIdiot.util.bstats</shadedPattern>
                         </relocation>
                     </relocations>
+                    <shadedArtifactAttached>true</shadedArtifactAttached>
                 </configuration>
 
                 <executions>
@@ -83,45 +72,15 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <outputFile>${basedir}/output/${project.artifactId}-${project.version}.jar</outputFile>
                             <filters>
                                 <filter>
                                     <artifact>net.minecrell:*</artifact>
                                     <excludes>
-                                        <exclude>plugin.yml</exclude>
-                                        <exclude>bungee.yml</exclude>
-                                        <exclude>mcmod.info</exclude>
+                                        <exclude>*.yml</exclude>
                                     </excludes>
                                 </filter>
                             </filters>
                         </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>3.1.0</version>
-                <configuration>
-                    <excludeDefaultDirectories>true</excludeDefaultDirectories>
-                    <filesets>
-                        <fileset>
-                            <directory>${basedir}/output</directory>
-                            <followSymlinks>false</followSymlinks>
-                            <useDefaultExcludes>false</useDefaultExcludes>
-                            <includes>
-                                <include>*.*</include>
-                            </includes>
-                        </fileset>
-                    </filesets>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>auto-clean</id>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>clean</goal>
-                        </goals>
                     </execution>
                 </executions>
             </plugin>
@@ -139,6 +98,28 @@
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.1.2</version>
+                <executions>
+                    <execution>
+                        <id>analyze</id>
+                        <goals>
+                            <goal>analyze-only</goal>
+                        </goals>
+                        <configuration>
+                            <failOnWarning>true</failOnWarning>
+
+                            <!-- ignore jsr305 for both "used but undeclared" and "declared but unused" -->
+                            <ignoredDependencies>
+                                <ignoredDependency>net.minecrell:ServerListPlus:Universal:3.5.0-SNAPSHOT</ignoredDependency>
+                            </ignoredDependencies>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
@@ -182,9 +163,15 @@
         </dependency>
 
         <dependency>
-            <groupId>com.googlecode.json-simple</groupId>
-            <artifactId>json-simple</artifactId>
-            <version>1.1.1</version>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20200518</version>
         </dependency>
 
         <dependency>

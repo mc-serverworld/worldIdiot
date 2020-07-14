@@ -19,7 +19,8 @@ public class McLeaksChecker {
             public void run() {
                 try {
                     if(player==null){
-
+                        DebugMessage.sendWarring(ChatColor.YELLOW + "Opps, where is the player?");
+                        return;
                     }
                     String playername = player.getName();
                     JSONObject json = jsonReader.readJsonFromUrl("https://mcleaks.themrgong.xyz/api/v3/isuuidmcleaks/"+player.getUniqueId().toString());//try to get json
